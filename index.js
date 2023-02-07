@@ -22,29 +22,16 @@ function bodyLoaded() {
         currMin = time.getMinutes() // Getting Current Minutes to be displayed
         currSec = time.getSeconds() // Getting Current Seconds to be displayed
 
-        H.innerText = currHour 
-        M.innerText = currMin 
-        S.innerText = currSec
+        H.innerText = currHour // Displaying Current Hour
+        M.innerText = currMin  // Displaying Current Minutes
+        S.innerText = currSec// Displaying Current Seconds 
         if ((time.getHours()) > 12) // Logic for checking whether it is AM or PM. As the default format of getHours is 24 so
         {
             antiPrime.innerText = "PM" // we are checking if the current hour is Greater Than 12 then it is PM
         }
         else {
             antiPrime.innerText = "AM" // else PM
-        }
-        if(currHour<12)
-        {
-            H.innerText = `0${currHour}` // Displaying Current Hour with appending zero before it if currHour is Less
-        }                                // Than 12
-        
-        if(currMin<10)
-        {
-            M.innerText = `0${currMin}` // Displaying Current Minutes with appending zero before it if currMin is Less
-        }                                // Than 10
-        if(currSec<10)
-        {
-            S.innerText = `0${currSec}` // Displaying Current Seconds with apending zero before itif currSec is Less
-        }                                // Than 10        
+        }     
     }, 1000)
 
     let setAlarm = document.getElementById("setAlarm"); // Getting the button to Set Alarm
@@ -59,7 +46,7 @@ function bodyLoaded() {
         }
         else { //else the alarm will be set
 
-            alert("alarm setted") //alerting  "alarm setted"
+            alert("Alarm set. Notice \" You can only stop Alarm after One Minute \" ") //alerting  "alarm setted"
             setInterval(() => { // Creating a setInterval() because that will continuosly check the condition
                                 // at every 2000ms i.e. if user entered hours and minutes are same to the current time or not
 
@@ -70,6 +57,7 @@ function bodyLoaded() {
                     mainContent.appendChild(btn) // Adding or append the Off Alarm Button that we created at the Starting
                     btn.addEventListener("click", () => { // Adding click event to stop or pause the alarm audio
                         audio.pause()
+                        audio.currentTime = 0
                         // alert("if you want to set alarm Again please Refresh the Page :))")
                     })
                 }
